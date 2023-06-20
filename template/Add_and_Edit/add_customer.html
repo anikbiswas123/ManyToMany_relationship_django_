@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Or Edit | Customer {% endblock title %}
+
+
+
+<!----------------------------- ( Contain Start ) ---------------------------------->
+{% block body %}
+  
+{% if edit %}
+  <div class="row d-flex align-items-center justify-content-center h-100">
+    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <h3 class="text-center mt-5 mb-4" style="font-family: serif; color: rgb(60, 84, 221);"><b>Edit Customer</b></h3>
+        {% include 'message.html' %}
+      <form method="POST" >
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input type="text" id="name" class="form-control"  placeholder="Name" name="name" required value="{{edit_info.cus_name}}">
+            <label for="name">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" id="email" class="form-control" placeholder="Email" name="email" required value="{{edit_info.cus_email}}">
+            <label for="email">Email</label>
+        </div>
+        <div class="form-floating">
+            <input type="text" id="phone" class="form-control" placeholder="Phone Number" name="phone" required value="{{edit_info.cus_mobile}}">
+            <label for="phone">Phone Number</label>
+        </div>
+
+        <!-- Submit button -->
+        <div class="mt-5">
+          <input type="hidden" name="id" value="{{edit_info.id}}">
+          <button type="submit" class="btn btn-lg btn-block" name="edit_info" style="background-color: rgb(36, 179, 167);">Update</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+{% else %}
+  <div class="row d-flex align-items-center justify-content-center h-100">
+    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <h3 class="text-center mt-5 mb-4" style="font-family: serif; color: rgb(60, 84, 221);"><b>Add Customer</b></h3>
+        {% include 'message.html' %}
+      <form method="POST" >
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input type="text" id="name" class="form-control"  placeholder="Name" name="name" required>
+            <label for="name">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" id="email" class="form-control" placeholder="Email" name="email" required>
+            <label for="email">Email</label>
+        </div>
+        <div class="form-floating">
+            <input type="text" id="phone" class="form-control" placeholder="Phone Number" name="phone" required>
+            <label for="phone">Phone Number</label>
+        </div>
+
+        <!-- Submit button -->
+        <div class="mt-5">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+{% endif %}
+
+{% endblock body %}
+<!----------------------------- ( Contain Start ) ---------------------------------->

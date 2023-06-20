@@ -1,0 +1,119 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    <!-- Font Awesome CDN Link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <title>
+      {% block title %} Base {% endblock title %}
+    </title>
+
+
+    
+    {% block css %}
+    
+    {% endblock css %}
+  </head>
+  <body>
+    <!-- Nave Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(215, 51, 139); height: 100px;">
+      <div class="container-fluid">
+        <!-- <a class="navbar-brand" style="font-family: serif; font-size: 35px; color: rgb(11, 11, 0);" href="#"><b>MrHassanIT</b></a> -->
+        <a href="{% url 'home' %}">
+          <img alt="logo" src="{% static 'img\logo\MrHassanIT_Logo-removebg.png' %}" width="130px" style="margin-left: 15rch;" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ml-5" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link {% block h_active %} {% endblock h_active %} fs-5 fw-bold" aria-current="page" href="{% url 'home' %}">
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% block c_active %} {% endblock c_active %} fs-5 fw-bold" href="{% url 'display_customer' %}">
+                Customer
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% block p_active %} {% endblock p_active %} fs-5 fw-bold" href="{% url 'display_product' %}">
+                Product
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle {% block a_active %} {% endblock a_active %} fs-5 fw-bold" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Addition
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="{% url 'add_customer' %}">Add Customer</a></li>
+                <li><a class="dropdown-item" href="{% url 'add_product' %}">Add Product</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% block ab_active %} {% endblock ab_active %} fs-5 fw-bold" href="{% url 'AboutUs' %}">
+                About Us
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  <!-- Nave End -->
+
+
+    <div class="container">
+    {% block body %}
+
+
+    {% endblock body %}
+    </div>
+
+  <!-- Footer Start -->
+  <div style="bottom: 0;">
+    <div class="blockcode" style="margin-top: 10%; background-color: rgb(156, 175, 223);">
+      <footer class="shadow">
+        <div
+          class="d-flex justify-content-between align-items-center mx-auto py-4 flex-wrap"
+          style="width: 80%;"
+        >
+          <a href="{% url 'home' %}" class="d-flex align-items-center p-0 text-dark">
+            <img alt="logo" src="{% static 'img\logo\MrHassanIT_Logo-removebg.png' %}" width="80px" />
+            <span class="ms-4 h5 font-weight-bold">Mr.Hassan-IT</span>
+          </a>
+          <small>&copy; Mr.Hassan-IT, 2020. All rights reserved.</small>
+          <div>
+            <button class="btn btn-dark btn-flat p-2">
+              <i class="fa fa-facebook"></i>
+            </button>
+            <button class="btn btn-dark btn-flat p-2">
+              <i class="fa fa-twitter"></i>
+            </button>
+            <button class="btn btn-dark btn-flat p-2">
+              <i class="fa fa-instagram"></i>
+            </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- Footer End -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    {% block js %}
+    
+    {% endblock js %}
+  </body>
+</html>

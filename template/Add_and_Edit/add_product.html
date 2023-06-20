@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Or Edit | Customer {% endblock title %}
+
+
+
+<!----------------------------- ( Contain Start ) ---------------------------------->
+{% block body %}
+  
+  <div class="row d-flex align-items-center justify-content-center h-100">
+    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <h3 class="text-center mt-5 mb-4" style="font-family: serif; color: rgb(23, 196, 40);"><b>Add Product</b></h3>
+        {% include 'message.html' %}
+      <form method="POST" >
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="mb-3">Customer:</label>
+            <select class="form-select" id="customerSelect" multiple aria-label="multiple select example" style="height:200px;" name="customer">
+              <option>Select Customer</option>
+              {% for cus in cus %}
+                <option value="{{cus.id}}">{{cus.cus_name}}</option>
+              {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" id="p_name" class="form-control" placeholder="Product Name" name="p_name" required>
+            <label for="p_name">Product Name</label>
+        </div>
+        <div class="form-floating">
+            <input type="number" id="quantity" class="form-control" placeholder="Quantity Number" name="quantity" required>
+            <label for="quantity">Quantity</label>
+        </div>
+
+        <!-- Submit button -->
+        <div class="mt-5">
+          <input type="hidden" name="id" value="{{edit_info.id}}">
+          <button type="submit" class="btn btn-lg btn-block" name="edit_info" style="background-color: rgb(63, 14, 226); color: aliceblue;">
+            Save
+        </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+{% endblock body %}
+<!----------------------------- ( Contain Start ) ---------------------------------->
+{% block js %}
+<script>
+  var selectElement = document.getElementById("customerSelect");
+  selectElement.options[0].disabled = true;
+</script>
+{% endblock js %}
